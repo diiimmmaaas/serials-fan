@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextButton = document.querySelector(".serialsFun-next-button");
 
   let currentIndex = 0;
-  const itemWidth = carousel.querySelector(".serialsFun-carousel-item").offsetWidth; // Ширина блока + расстояние между блоками
+  const itemWidth = carousel.querySelector(".serialsFun-carousel-item").offsetWidth + 40;
 
   console.log('itemWidth', itemWidth);
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
   nextButton.addEventListener("click", showNext);
 });
 
-var openModalBtnsWithClassName = document.getElementsByClassName("serialsFunOpenModalBtn");
+var openModalBtnsWithClassName = document.getElementsByClassName("for-big-screen");
 var closeModalBtn = document.getElementById("serialsFunCloseModalBtn");
 var modal = document.getElementById("serialsFunModal");
 
@@ -48,3 +48,29 @@ window.addEventListener("click", function(event) {
     modal.style.display = "none";
   }
 });
+
+var openModalBtnsWithClassNameSmall = document.getElementsByClassName("for-small-screen");
+var closeModalBtnSmall = document.getElementById("serialsFunCloseModalBtnSmall");
+var modalSmall = document.getElementById("serialsFunModalSmall");
+
+console.log('openModalBtnsWithClassNameSmall', openModalBtnsWithClassNameSmall);
+console.log('closeModalBtnSmall', closeModalBtnSmall);
+console.log('modalSmall', modalSmall);
+
+for (let i = 0; i < openModalBtnsWithClassNameSmall.length; i++) {
+  const openModalBtnSmall = openModalBtnsWithClassNameSmall[i]
+  openModalBtnSmall.addEventListener("click", function() {
+    modalSmall.style.display = "block";
+  });
+}
+
+closeModalBtnSmall.addEventListener("click", function() {
+  modalSmall.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+  if (event.target == modalSmall) {
+    modalSmall.style.display = "none";
+  }
+});
+
