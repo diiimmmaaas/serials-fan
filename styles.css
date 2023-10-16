@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@700&family=PT+Sans:wght@400;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@700&family=PT+Sans:wght@400;700&display=swap');*/
 
-/*@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=PT+Sans:wght@400;700&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=PT+Sans:wght@400;700&display=swap');
 
-/*@font-face {*/
-/*  font-family: "Bebas Neue";*/
-/*  src: url("./assets/fonts/bebas-neue-bold.otf") format("otf");*/
-/*}*/
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("./assets/fonts/BebasNeueBold.ttf") format("ttf");
+  src: url("./assets/fonts/BebasNeueBold.woff") format("woff");
+}
 
 
 *,
@@ -87,7 +88,8 @@ select {
 }
 
 .serialsFunContainer {
-  width: 1023px;
+  max-width: 1023px;
+  padding: 0 12px 0 12px;
 }
 
 .serialsFunHeader {
@@ -168,6 +170,14 @@ select {
   cursor: pointer;
 }
 
+.serialsFunSaveBtn:hover {
+  background: #FF1292;
+}
+
+.serialsFunSaveBtn:hover path {
+  fill: #101010;
+}
+
 .serialsFunSaveBtnTG {
   width: 19px;
   height: 15px;
@@ -186,6 +196,18 @@ select {
   object-fit: contain;
 }
 
+.serialsFunSaveBtnTG path,
+.serialsFunSaveBtnVK path,
+.serialsFunSaveBtnFav path {
+  fill:#FF1292;
+}
+
+.serialsFunSaveBtnTG:hover path {
+  width: 19px;
+  height: 15px;
+  object-fit: contain;
+}
+
 .serialsFunContent {
   width: 100%;
   display: flex;
@@ -198,7 +220,7 @@ select {
 }
 
 .serialFun_newSerialsBlock {
-
+  margin-bottom: 20px;
 }
 
 .serialFun_title {
@@ -221,7 +243,7 @@ select {
 }
 
 .serialFun_newSerialsContainerImage {
-  width: 251px;
+  width: 215px;
   height: 132px;
   object-fit: cover;
   margin-right: 40px;
@@ -266,8 +288,8 @@ select {
 }
 
 .serialFun_listOfSerialsItem {
-  width: 230px;
-  height: 133px;
+  /*width: 230px;*/
+  /*height: 133px;*/
   position: relative;
 }
 
@@ -292,6 +314,7 @@ select {
 .serialFun_installAppBlock {
   margin-bottom: 40px;
 }
+
 .serialFun_Subtitle {
   color: #FFF;
   text-align: center;
@@ -314,7 +337,7 @@ select {
 }
 
 .serialFun_installAppTG {
-  width: 230px;
+  width: 23%;
   height: 35px;
   border: 1px solid #FF1292;
   display: flex;
@@ -324,13 +347,32 @@ select {
   cursor: pointer;
 }
 
-.serialFun_installAppTGIcon {
-  width: 19px;
-  height: 15px;
+.serialFun_installAppTG:hover,
+.serialFun_installAppVK:hover,
+.serialFun_installAppFav:hover {
+  background: #FF1292;
+}
+
+.serialFun_installAppTG:hover path,
+.serialFun_installAppVK:hover path,
+.serialFun_installAppFav:hover path {
+  fill: #101010;
+}
+
+.serialFun_installAppTGIcon path,
+.serialFun_installAppVK path,
+.serialFun_installAppFavIcon path {
+  fill: #FF1292;
+}
+
+.serialFun_installAppTG:hover .serialFun_installAppBtnText,
+.serialFun_installAppVK:hover .serialFun_installAppBtnText,
+.serialFun_installAppFav:hover .serialFun_installAppBtnText {
+  color: #101010;
 }
 
 .serialFun_installAppVK {
-  width: 230px;
+  width: 23%;
   height: 35px;
   border: 1px solid #FF1292;
   display: flex;
@@ -340,13 +382,9 @@ select {
   cursor: pointer;
 }
 
-.serialFun_installAppVKIcon {
-  width: 23px;
-  height: 14px;
-}
 
 .serialFun_installAppFav {
-  width: 460px;
+  width: 50%;
   height: 35px;
   border: 1px solid #FF1292;
   display: flex;
@@ -354,11 +392,6 @@ select {
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-}
-
-.serialFun_installAppFavIcon {
-  width: 14px;
-  height: 16px;
 }
 
 .serialFun_installAppBtnText {
@@ -373,6 +406,7 @@ select {
   text-transform: uppercase;
 }
 
+
 .serialFun_installAppSaveBtn {
   width: 100%;
   height: 35px;
@@ -381,9 +415,159 @@ select {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .serialFun_installAppSaveBtnText {
+  color: #101010;
+  text-align: center;
+  font-family: Bebas Neue;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.serialsFun-carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.serialsFun-carousel {
+  display: flex;
+  transition: transform 0.3s;
+}
+
+.serialsFun-carousel-item {
+  flex: 0 0 calc(215px + 40px);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.serialsFun-carousel-item:last-child {
+  flex: 0 0 215px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.serialsFun-carousel img {
+  max-width: 100%;
+  height: 132px; /* Высота картинки */
+}
+
+.serialsFun-carousel-button {
+  width: 34px;
+  height: 57px;
+  background-color: #101010;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 37px;
+}
+
+.serialsFun-carousel-button:hover {
+  background-color: #555;
+}
+
+.serialsFun-carousel-button_icon {
+  width: 9.23px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.serialsFun-prev-button {
+  left: 0;
+}
+
+.serialsFun-next-button {
+  right: 0;
+}
+
+.serialsFun-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 1, 0.8);
+}
+
+.serialsFun-modal-content {
+  background-color: #181818;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 39px;
+  padding-right: 39px;
+  padding-top: 39px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 460px;
+  height: 191.247px;
+}
+
+.serialsFun-close-btn {
+  position: absolute;
+  top: -65px;
+  left: 212px;
+  cursor: pointer;
+  width: 37px;
+  height: 37px;
+  border: 1px solid #BDBDBD;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serialsFun-close-icon {
+  width: 13px;
+  height: 13px;
+  object-fit: cover;
+}
+
+.serialsFun-modal-title {
+  color: #FFF;
+  text-align: center;
+  font-family: Bebas Neue;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.serialsFun-modal-title span {
+  color: #FF1292;
+}
+
+.serialsFun-modal-submit-btn {
+  width: 100%;
+  height: 35px;
+  border-radius: 2px;
+  background: #FF1292;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.serialsFun-modal-submit-btnText {
   color: #101010;
   text-align: center;
   font-family: Bebas Neue;
