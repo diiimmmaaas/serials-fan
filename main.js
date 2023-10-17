@@ -1,31 +1,57 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const carousel = document.querySelector(".serialsFun-carousel");
-  const prevButton = document.querySelector(".serialsFun-prev-button");
-  const nextButton = document.querySelector(".serialsFun-next-button");
+const carousel = document.querySelector('.serialsFun-carousel');
+const items = document.querySelectorAll('.serialsFun-carousel-item');
+const prevButton = document.querySelector('.serialsFun-prev-button');
+const nextButton = document.querySelector('.serialsFun-next-button');
+let currentIndex = 0;
+let itemsPerPage = 4;
+let itemWidth = items[0].offsetWidth + 40;
 
-  let currentIndex = 0;
-  const itemWidth = carousel.querySelector(".serialsFun-carousel-item").offsetWidth + 40;
+function updateCarousel() {
+  if (window.innerWidth <= 900 && window.innerWidth > 520) {
+    itemsPerPage = 3
+    itemWidth = items[0].offsetWidth;
+  } else if (window.innerWidth <= 520) {
+    itemsPerPage = 2;
+    itemWidth = items[0].offsetWidth;
+  }  else {
+    itemsPerPage = 4;
+    itemWidth = items[0].offsetWidth;
+  }
+  showItem(currentIndex);
+}
+updateCarousel();
 
-  console.log('itemWidth', itemWidth);
 
-  function updateCarousel() {
-    const offset = currentIndex * -itemWidth;
-    carousel.style.transform = `translateX(${offset}px)`;
+function showItem(index) {
+  const translateX = `-${index * itemsPerPage * itemWidth}px`;
+  carousel.style.transform = `translateX(${translateX})`;
+}
+
+function nextItem() {
+  if (currentIndex + 1 < items.length/itemsPerPage) {
+    currentIndex += 1;
+    showItem(currentIndex);
+    console.log('itemWidth', itemWidth);
+    console.log('currentIndex', currentIndex);
+    console.log('itemsPerPage', itemsPerPage);
+    console.log('items.length', items.length);
   }
 
-  function showNext() {
-    currentIndex = Math.min(currentIndex + 4, 11);
-    updateCarousel();
-  }
+}
 
-  function showPrev() {
-    currentIndex = Math.max(currentIndex - 4, 0);
-    updateCarousel();
+function prevItem() {
+  if (currentIndex > 0) {
+    currentIndex -= 1;
+    showItem(currentIndex);
   }
+}
 
-  prevButton.addEventListener("click", showPrev);
-  nextButton.addEventListener("click", showNext);
-});
+nextButton.addEventListener('click', nextItem);
+prevButton.addEventListener('click', prevItem);
+
+window.addEventListener('resize', updateCarousel);
+
+showItem(currentIndex);
 
 var openModalBtnsWithClassName = document.getElementsByClassName("for-big-screen");
 var closeModalBtn = document.getElementById("serialsFunCloseModalBtn");
